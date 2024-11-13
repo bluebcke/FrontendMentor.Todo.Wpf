@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Resources\bg-desktop-dark.jpg" />
+    <None Remove="Resources\bg-desktop-light.jpg" />
+    <None Remove="Resources\JosefinSans-Italic.ttf" />
+    <None Remove="Resources\JosefinSans.ttf" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CommunityToolkit.Mvvm" Version="8.3.2" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Sqlite" Version="8.0.10" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resources\bg-desktop-dark.jpg" />
+    <Resource Include="Resources\bg-desktop-light.jpg" />
+    <Resource Include="Resources\JosefinSans-Italic.ttf" />
+    <Resource Include="Resources\JosefinSans.ttf" />
+  </ItemGroup>
+
+</Project>
