@@ -4,28 +4,31 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:FrontendMentor.Todo.Wpf"
-        mc:Ignorable="d"
+        mc:Ignorable="d" 
         Title="MainWindow" Height="450" Width="800">
     <Grid>
         <Grid.Background>
             <ImageBrush Stretch="None" AlignmentY="Top" ImageSource="{StaticResource LightBackground}" />
         </Grid.Background>
-        <Grid HorizontalAlignment="Center" MaxWidth="600">
+        <Grid Margin="0 80" HorizontalAlignment="Center" MaxWidth="600">
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition/>
                 <RowDefinition Height="Auto" />
             </Grid.RowDefinitions>
-            <Label Grid.Row="0" FontSize="28" FontWeight="ExtraBold" Foreground="White">T O D O</Label>
-            <DockPanel Grid.Row="1">
-                <CheckBox />
-                <TextBox Text="{Binding NewTodoText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
-                    <TextBox.InputBindings>
-                        <KeyBinding Key="Return" Command="{Binding AddTodoCommand}" />
-                    </TextBox.InputBindings>
-                </TextBox>
-            </DockPanel>
+            <TextBlock Margin="0 0 0 40" Padding="0" Grid.Row="0" FontSize="28" FontWeight="ExtraBold" Foreground="White">T O D O</TextBlock>
+            <Border Margin="0 0 0 25"  Grid.Row="1" Background="White">
+                <DockPanel>
+                    <CheckBox  />
+                    <TextBox Text="{Binding NewTodoText, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged, TargetNullValue=asdf}">
+                        <TextBox.InputBindings>
+                            <KeyBinding Key="Return" Command="{Binding AddTodoCommand}" />
+                        </TextBox.InputBindings>
+                    </TextBox>
+                </DockPanel>
+            </Border>
+
             <ListView ItemsSource="{Binding TodoItems}" Grid.Row="2"/>
             <DockPanel Grid.Row="3">
                 <Label Padding="0 0 40 0" DockPanel.Dock="Left">X item left</Label>
