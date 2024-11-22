@@ -43,6 +43,16 @@ namespace FrontendMentor.Todo.Wpf
 
             return services.BuildServiceProvider();
         }
+
+        private void Application_Startup(object sender, StartupEventArgs e)
+        {
+            Window window;
+
+            window = new MainWindow();
+            window.DataContext = App.Current.Services.GetService<MainWindowViewModel>();
+
+            window.Show();
+        }
     }
 
     static class ServiceProviderExtensions

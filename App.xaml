@@ -2,13 +2,13 @@
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:local="clr-namespace:FrontendMentor.Todo.Wpf"
-             StartupUri="MainWindow.xaml">
+             Startup="Application_Startup">
     <Application.Resources>
         <ImageSource x:Key="LightBackground">pack://application:,,,/Resources/bg-desktop-light.jpg</ImageSource>
 
         <FontFamily x:Key="JosefinSans">pack://application:,,,/Resources/#Josefin Sans</FontFamily>
         <FontFamily x:Key="JosefinSansItalic">pack://application:,,,/Resources/#Josefin Sans Italic</FontFamily>
-
+        
         <Style TargetType="Window">
             <Setter Property="Background" Value="#fafafa" />
         </Style>
@@ -16,7 +16,7 @@
         <Style TargetType="TextBlock">
             <Setter Property="FontFamily" Value="{StaticResource JosefinSans}"/>
             <Setter Property="FontWeight" Value="SemiBold" />
-            <Setter Property="FontSize" Value="20" />
+            <Setter Property="FontSize" Value="18" />
             <Setter Property="Foreground" Value="#6a6a74" />
         </Style>
 
@@ -65,7 +65,16 @@
         </Style>
 
 
-
+        <!-- Textbox -->
+        <Style TargetType="{x:Type TextBox}" 
+               BasedOn="{StaticResource {x:Type TextBox}}">
+            <Setter Property="FontFamily" Value="{StaticResource JosefinSans}" />
+            <Setter Property="FontSize" Value="18" />
+            <Setter Property="Padding" Value="10" />
+            <Setter Property="BorderBrush" Value="Transparent" />
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="Foreground" Value="#6a6a74" />
+        </Style>
 
         <!-- checkbox -->
         <Style x:Key="FocusVisual">

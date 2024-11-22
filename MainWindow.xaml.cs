@@ -20,7 +20,6 @@ namespace FrontendMentor.Todo.Wpf
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = App.Current.Services.GetService<MainWindowViewModel>();
         }
     }
 }
