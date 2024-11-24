@@ -1,4 +1,6 @@
-﻿using FrontendMentor.Todo.Wpf.ViewModels;
+﻿using FrontendMentor.Todo.Wpf.Models;
+using FrontendMentor.Todo.Wpf.Services;
+using FrontendMentor.Todo.Wpf.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +11,16 @@ namespace FrontendMentor.Todo.Wpf.Helpers
 {
     class TodoItemsViewModelFactory : IFactory<Models.Todo, TodoItemViewModel>
     {
-        public TodoItemsViewModelFactory(/* inject other dependencies if needed */)
+        private readonly ITodoService todoService;
+
+        public TodoItemsViewModelFactory(ITodoService todoService)
         {
-            
+            this.todoService = todoService;
         }
 
         public TodoItemViewModel Create(Models.Todo model)
         {
-            return new TodoItemViewModel(model);
+            return new TodoItemViewModel(todoService, model);
         }
     }
 }

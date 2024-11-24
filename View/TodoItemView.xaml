@@ -8,8 +8,10 @@
              d:DesignHeight="450" d:DesignWidth="800">
     <Grid>
         <DockPanel>
-            <CheckBox DockPanel.Dock="Left" />
-            <TextBlock Text="{Binding Title}" />
+            <Button DockPanel.Dock="Right" Command="{Binding DeleteCommand}">Delete</Button>
+            <CheckBox IsChecked="{Binding IsCompleted, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}">
+                <TextBlock Text="{Binding Title}" />
+            </CheckBox>
         </DockPanel>
     </Grid>
 </UserControl>

@@ -10,6 +10,9 @@ namespace FrontendMentor.Todo.Wpf.Services
     interface ITodoService
     {
         Task<Models.Todo> CreateTodoAsync(string title);
+        IEnumerable<Models.Todo> GetTodos();
+        Task DeleteTodoAsync(int id);
+        Task UpdateAsync(Models.Todo todo);
     }
 
     class TodoService : ITodoService
@@ -34,6 +37,24 @@ namespace FrontendMentor.Todo.Wpf.Services
             await dbContext.SaveChangesAsync();
 
             return todo;
+        }
+
+        public async Task DeleteTodoAsync(int id)
+        {
+            var todo = dbContext.Todos.Single(m => m.Id == id);
+            dbContext.Todos.Remove(todo);
+            await dbContext.SaveChangesAsync();
+        }
+
+        public IEnumerable<Models.Todo> GetTodos() { return dbContext.Todos; }
+
+        public async Task UpdateAsync(Models.Todo newTodo)
+        {
+            var todo = await dbContext.Todos.FindAsync(newTodo.Id)
+                ?? throw new KeyNotFoundException($"Todo with id {newTodo.Id} not found");
+
+            dbContext.Entry(todo).CurrentValues.SetValues(newTodo);
+            await dbContext.SaveChangesAsync();
         }
     }
 }

@@ -29,7 +29,17 @@
                 </DockPanel>
             </Border>
 
-            <ListView ItemsSource="{Binding TodoItems}" Grid.Row="2"/>
+            <!--<ListView ItemsSource="{Binding TodoItems}" Grid.Row="2"/>-->
+            <Border Grid.Row="2" CornerRadius="5"  Background="White">
+                <Border.Effect>
+                    <DropShadowEffect BlurRadius="40" ShadowDepth="0" Opacity=".3"  Color="#000" />
+                </Border.Effect>
+                <ScrollViewer VerticalScrollBarVisibility="Auto">
+                    <ItemsControl ItemsSource="{Binding TodoItems}">
+                </ItemsControl>
+            </ScrollViewer>
+            </Border>
+
             <DockPanel Grid.Row="3">
                 <Label Padding="0 0 40 0" DockPanel.Dock="Left">X item left</Label>
                 <Button  Margin="40 0 0 0" DockPanel.Dock="Right">Clear Completed</Button>
