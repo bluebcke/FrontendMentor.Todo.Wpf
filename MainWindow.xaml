@@ -36,17 +36,26 @@
                 </Border.Effect>
                 <ScrollViewer VerticalScrollBarVisibility="Auto">
                     <ItemsControl ItemsSource="{Binding TodoItems}">
-                </ItemsControl>
-            </ScrollViewer>
+                    </ItemsControl>
+                </ScrollViewer>
             </Border>
 
             <DockPanel Grid.Row="3">
                 <Label Padding="0 0 40 0" DockPanel.Dock="Left">X item left</Label>
                 <Button  Margin="40 0 0 0" DockPanel.Dock="Right">Clear Completed</Button>
                 <StackPanel Orientation="Horizontal">
-                    <Button Padding="20 0">All</Button>
-                    <Button Padding="20 0">Active</Button>
-                    <Button Padding="20 0">Completed</Button>
+                    <RadioButton 
+                        Command="{Binding FilterCommand}" 
+                        CommandParameter="{x:Static local:TodoFilter.All}" 
+                        Padding="20 0">All</RadioButton>
+                    <RadioButton 
+                        Command="{Binding FilterCommand}" 
+                        CommandParameter="{x:Static local:TodoFilter.Active}" 
+                        Padding="20 0">Active</RadioButton>
+                    <RadioButton 
+                        Command="{Binding FilterCommand}" 
+                        CommandParameter="{x:Static local:TodoFilter.Complete}" 
+                        Padding="20 0">Completed</RadioButton>
                 </StackPanel>
             </DockPanel>
         </Grid>

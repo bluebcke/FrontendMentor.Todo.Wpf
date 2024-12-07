@@ -14,6 +14,13 @@ using System.Threading.Tasks;
 
 namespace FrontendMentor.Todo.Wpf
 {
+    enum TodoFilter
+    {
+        All,
+        Active,
+        Complete
+    }
+
     partial class MainWindowViewModel : ObservableObject,
         IRecipient<TodoDeleteMessage>,
         IRecipient<TodoUpdateMessage>
@@ -54,6 +61,33 @@ namespace FrontendMentor.Todo.Wpf
             NewTodoText = "";
         }
 
+        [RelayCommand]
+        void Filter(TodoFilter filter)
+        {
+            switch (filter)
+            {
+                case TodoFilter.All:
+                    TodoItems = new ObservableCollection<TodoItemViewModel>(
+                        todoService.GetTodos()
+                        .Select(t => todoItemVMFactory.Create(t)).ToList());
+                    break;
+                case TodoFilter.Active:
+                    TodoItems = new ObservableCollection<TodoItemViewModel>(
+                        todoService.GetTodos()
+                        .Where(t => !t.Completed)
+                        .Select(t => todoItemVMFactory.Create(t)).ToList());
+                    break;
+                case TodoFilter.Complete:
+                    TodoItems = new ObservableCollection<TodoItemViewModel>(
+                        todoService.GetTodos()
+                        .Where(t => t.Completed)
+                        .Select(t => todoItemVMFactory.Create(t)).ToList());
+                    break;
+                default:
+                    break;
+            }
+            
+        }
 
         public async void Receive(TodoDeleteMessage message)
         {
